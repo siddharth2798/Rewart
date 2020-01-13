@@ -140,6 +140,7 @@ module.exports = {
       member.email = email;
       member.phoneNumber = phoneNumber;
       member.points = 0;
+      member.totalPoints = 0;
 
       // Submit the specified transaction.
       console.log("\nSubmit Create Member transaction.");
