@@ -559,6 +559,52 @@ module.exports = {
   },
 
   /*
+   * Get all members data
+   * @param {String} cardId Card id to connect to network
+   */
+  allMembersInfo: async function(cardId) {
+    // Create a new file system based wallet for managing identities.
+    const walletPath = path.join(process.cwd(), "/wallet");
+    const wallet = new FileSystemWallet(walletPath);
+    console.log(`Wallet path: ${walletPath}`);
+
+    try {
+      // Create a new gateway for connecting to our peer node.
+      const gateway2 = new Gateway();
+      await gateway2.connect(ccp, {
+        wallet,
+        identity: cardId,
+        discovery: gatewayDiscovery
+      });
+
+      // Get the network (channel) our contract is deployed to.
+      const network = await gateway2.getNetwork("mychannel");
+
+      // Get the contract from the network.
+      const contract = network.getContract("customerloyalty");
+
+      console.log("\nGet all members state ");
+      let allMembers = await contract.evaluateTransaction(
+        "GetState",
+        "all-members"
+      );
+      allMembers = JSON.parse(allMembers.toString());
+      console.log(allMembers);
+
+      // Disconnect from the gateway.
+      await gateway2.disconnect();
+
+      return allMembers;
+    } catch (err) {
+      //print and return error
+      console.log(err);
+      var error = {};
+      error.error = err.message;
+      return error;
+    }
+  },
+
+  /*
    * Get all EarnPoints transactions data
    * @param {String} cardId Card id to connect to network
    */

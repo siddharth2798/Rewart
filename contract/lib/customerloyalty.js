@@ -2,6 +2,7 @@
 
 const { Contract } = require("fabric-contract-api");
 const allPartnersKey = "all-partners";
+const allMembersKey = "all-members";
 const earnPointsTransactionsKey = "earn-points-transactions";
 const usePointsTransactionsKey = "use-points-transactions";
 
@@ -12,6 +13,7 @@ class CustomerLoyalty extends Contract {
 
     await ctx.stub.putState("instantiate", Buffer.from("INIT-LEDGER"));
     await ctx.stub.putState(allPartnersKey, Buffer.from(JSON.stringify([])));
+    await ctx.stub.putState(allMembersKey, Buffer.from(JSON.stringify([])));
     await ctx.stub.putState(
       earnPointsTransactionsKey,
       Buffer.from(JSON.stringify([]))
@@ -31,6 +33,14 @@ class CustomerLoyalty extends Contract {
     await ctx.stub.putState(
       member.accountNumber,
       Buffer.from(JSON.stringify(member))
+    );
+
+    let allMembers = await ctx.stub.getState(allMembersKey);
+    allMembers = JSON.parse(allMembers);
+    allMembers.push(member);
+    await ctx.stub.putState(
+      allMembersKey,
+      Buffer.from(JSON.stringify(allMembers))
     );
 
     return JSON.stringify(member);
@@ -160,7 +170,6 @@ class CustomerLoyalty extends Contract {
   // get the state from key
   async GetState(ctx, key) {
     let data = await ctx.stub.getState(key);
-
     let jsonData = JSON.parse(data.toString());
     return JSON.stringify(jsonData);
   }

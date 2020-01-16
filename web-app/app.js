@@ -339,20 +339,39 @@ app.post("/api/memberData", function(req, res) {
             })
             .then(() => {
               //get partners to transact with from the network
-              network.allPartnersInfo(cardId).then(partnersInfo => {
-                //return error if error in response
-                if (partnersInfo.error != null) {
-                  res.json({
-                    error: partnersInfo.error
-                  });
-                } else {
-                  //else add partners data to return object
-                  returnData.partnersData = partnersInfo;
-                }
+              network
+                .allPartnersInfo(cardId)
+                .then(partnersInfo => {
+                  //return error if error in response
+                  if (partnersInfo.error != null) {
+                    res.json({
+                      error: partnersInfo.error
+                    });
+                  } else {
+                    //else add partners data to return object
+                    returnData.partnersData = partnersInfo;
+                  }
 
-                //return returnData
-                res.json(returnData);
-              });
+                  //return returnData
+                  // res.json(returnData);
+                })
+                .then(() => {
+                  //get members to transact with from the network
+                  network.allMembersInfo(cardId).then(membersInfo => {
+                    //return error if error in response
+                    if (membersInfo.error != null) {
+                      res.json({
+                        error: membersInfo.error
+                      });
+                    } else {
+                      //else add members data to return object
+                      returnData.membersData = membersInfo;
+                    }
+
+                    //return returnData
+                    res.json(returnData);
+                  });
+                });
             });
         });
     });
