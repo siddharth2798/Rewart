@@ -113,7 +113,7 @@ class MemberDashboard extends StatelessWidget {
                                   Theme.of(context).accentTextTheme.bodyText1,
                             ),
                             Text(
-                              '\$625.00\nBalance',
+                              '\$${value.memberSignedIn.points * 0.1}\nBalance',
                               textAlign: TextAlign.center,
                               style:
                                   Theme.of(context).accentTextTheme.bodyText1,

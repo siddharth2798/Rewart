@@ -178,7 +178,7 @@ class ShopItem extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "\$${item.price}",
+                    "\$${double.parse(item.price) * 0.1}",
                     style: TextStyle(
                       color: Colors.brown,
                       fontSize: 18,
