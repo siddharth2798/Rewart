@@ -409,10 +409,9 @@ class _$PartnerBasic with DiagnosticableTreeMixin implements PartnerBasic {
 }
 
 abstract class PartnerBasic implements Partner {
-  const factory PartnerBasic({
-    @required UniqueId id,
-    @required StringWithOnlyLetters companyName,
-  }) = _$PartnerBasic;
+  const factory PartnerBasic(
+      {@required UniqueId id,
+      @required StringWithOnlyLetters companyName}) = _$PartnerBasic;
 
   @override
   UniqueId get id;

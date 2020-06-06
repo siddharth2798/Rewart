@@ -1376,8 +1376,7 @@ class _$SignInFormMemberStateTearOff {
       @required
           bool showErrorMessages,
       @required
-          Option<Either<AppFailure, MemberSignedIn>>
-              authFailureOrSuccessOption}) {
+          Option<Either<AppFailure, dynamic>> authFailureOrSuccessOption}) {
     return _SignInFormMemberState(
       member: member,
       isSubmitting: isSubmitting,
@@ -1394,7 +1393,7 @@ mixin _$SignInFormMemberState {
   MemberRegister get member;
   bool get isSubmitting;
   bool get showErrorMessages;
-  Option<Either<AppFailure, MemberSignedIn>> get authFailureOrSuccessOption;
+  Option<Either<AppFailure, dynamic>> get authFailureOrSuccessOption;
 
   $SignInFormMemberStateCopyWith<SignInFormMemberState> get copyWith;
 }
@@ -1407,7 +1406,7 @@ abstract class $SignInFormMemberStateCopyWith<$Res> {
       {MemberRegister member,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AppFailure, MemberSignedIn>> authFailureOrSuccessOption});
+      Option<Either<AppFailure, dynamic>> authFailureOrSuccessOption});
 }
 
 class _$SignInFormMemberStateCopyWithImpl<$Res>
@@ -1434,8 +1433,7 @@ class _$SignInFormMemberStateCopyWithImpl<$Res>
           : showErrorMessages as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption
-              as Option<Either<AppFailure, MemberSignedIn>>,
+          : authFailureOrSuccessOption as Option<Either<AppFailure, dynamic>>,
     ));
   }
 }
@@ -1450,7 +1448,7 @@ abstract class _$SignInFormMemberStateCopyWith<$Res>
       {MemberRegister member,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AppFailure, MemberSignedIn>> authFailureOrSuccessOption});
+      Option<Either<AppFailure, dynamic>> authFailureOrSuccessOption});
 }
 
 class __$SignInFormMemberStateCopyWithImpl<$Res>
@@ -1479,8 +1477,7 @@ class __$SignInFormMemberStateCopyWithImpl<$Res>
           : showErrorMessages as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption
-              as Option<Either<AppFailure, MemberSignedIn>>,
+          : authFailureOrSuccessOption as Option<Either<AppFailure, dynamic>>,
     ));
   }
 }
@@ -1505,7 +1502,7 @@ class _$_SignInFormMemberState
   @override
   final bool showErrorMessages;
   @override
-  final Option<Either<AppFailure, MemberSignedIn>> authFailureOrSuccessOption;
+  final Option<Either<AppFailure, dynamic>> authFailureOrSuccessOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1559,15 +1556,15 @@ class _$_SignInFormMemberState
 
 abstract class _SignInFormMemberState implements SignInFormMemberState {
   const factory _SignInFormMemberState(
-      {@required
-          MemberRegister member,
-      @required
-          bool isSubmitting,
-      @required
-          bool showErrorMessages,
-      @required
-          Option<Either<AppFailure, MemberSignedIn>>
-              authFailureOrSuccessOption}) = _$_SignInFormMemberState;
+          {@required
+              MemberRegister member,
+          @required
+              bool isSubmitting,
+          @required
+              bool showErrorMessages,
+          @required
+              Option<Either<AppFailure, dynamic>> authFailureOrSuccessOption}) =
+      _$_SignInFormMemberState;
 
   @override
   MemberRegister get member;
@@ -1576,7 +1573,7 @@ abstract class _SignInFormMemberState implements SignInFormMemberState {
   @override
   bool get showErrorMessages;
   @override
-  Option<Either<AppFailure, MemberSignedIn>> get authFailureOrSuccessOption;
+  Option<Either<AppFailure, dynamic>> get authFailureOrSuccessOption;
   @override
   _$SignInFormMemberStateCopyWith<_SignInFormMemberState> get copyWith;
 }

@@ -24,6 +24,13 @@ class _$MemberAppEventTearOff {
       points,
     );
   }
+
+  EarnPoints earnPoints(MemberSignedIn member, String points) {
+    return EarnPoints(
+      member,
+      points,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -34,22 +41,26 @@ mixin _$MemberAppEvent {
   Result when<Result extends Object>({
     @required Result loadEvent(MemberRegister member),
     @required Result usePoints(MemberSignedIn member, String points),
+    @required Result earnPoints(MemberSignedIn member, String points),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadEvent(MemberRegister member),
     Result usePoints(MemberSignedIn member, String points),
+    Result earnPoints(MemberSignedIn member, String points),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result loadEvent(LoadEvent value),
     @required Result usePoints(UsePoints value),
+    @required Result earnPoints(EarnPoints value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result loadEvent(LoadEvent value),
     Result usePoints(UsePoints value),
+    Result earnPoints(EarnPoints value),
     @required Result orElse(),
   });
 }
@@ -125,9 +136,11 @@ class _$LoadEvent implements LoadEvent {
   Result when<Result extends Object>({
     @required Result loadEvent(MemberRegister member),
     @required Result usePoints(MemberSignedIn member, String points),
+    @required Result earnPoints(MemberSignedIn member, String points),
   }) {
     assert(loadEvent != null);
     assert(usePoints != null);
+    assert(earnPoints != null);
     return loadEvent(member);
   }
 
@@ -136,6 +149,7 @@ class _$LoadEvent implements LoadEvent {
   Result maybeWhen<Result extends Object>({
     Result loadEvent(MemberRegister member),
     Result usePoints(MemberSignedIn member, String points),
+    Result earnPoints(MemberSignedIn member, String points),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -150,9 +164,11 @@ class _$LoadEvent implements LoadEvent {
   Result map<Result extends Object>({
     @required Result loadEvent(LoadEvent value),
     @required Result usePoints(UsePoints value),
+    @required Result earnPoints(EarnPoints value),
   }) {
     assert(loadEvent != null);
     assert(usePoints != null);
+    assert(earnPoints != null);
     return loadEvent(this);
   }
 
@@ -161,6 +177,7 @@ class _$LoadEvent implements LoadEvent {
   Result maybeMap<Result extends Object>({
     Result loadEvent(LoadEvent value),
     Result usePoints(UsePoints value),
+    Result earnPoints(EarnPoints value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -244,9 +261,11 @@ class _$UsePoints implements UsePoints {
   Result when<Result extends Object>({
     @required Result loadEvent(MemberRegister member),
     @required Result usePoints(MemberSignedIn member, String points),
+    @required Result earnPoints(MemberSignedIn member, String points),
   }) {
     assert(loadEvent != null);
     assert(usePoints != null);
+    assert(earnPoints != null);
     return usePoints(member, points);
   }
 
@@ -255,6 +274,7 @@ class _$UsePoints implements UsePoints {
   Result maybeWhen<Result extends Object>({
     Result loadEvent(MemberRegister member),
     Result usePoints(MemberSignedIn member, String points),
+    Result earnPoints(MemberSignedIn member, String points),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -269,9 +289,11 @@ class _$UsePoints implements UsePoints {
   Result map<Result extends Object>({
     @required Result loadEvent(LoadEvent value),
     @required Result usePoints(UsePoints value),
+    @required Result earnPoints(EarnPoints value),
   }) {
     assert(loadEvent != null);
     assert(usePoints != null);
+    assert(earnPoints != null);
     return usePoints(this);
   }
 
@@ -280,6 +302,7 @@ class _$UsePoints implements UsePoints {
   Result maybeMap<Result extends Object>({
     Result loadEvent(LoadEvent value),
     Result usePoints(UsePoints value),
+    Result earnPoints(EarnPoints value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -296,6 +319,133 @@ abstract class UsePoints implements MemberAppEvent {
   MemberSignedIn get member;
   String get points;
   $UsePointsCopyWith<UsePoints> get copyWith;
+}
+
+abstract class $EarnPointsCopyWith<$Res> {
+  factory $EarnPointsCopyWith(
+          EarnPoints value, $Res Function(EarnPoints) then) =
+      _$EarnPointsCopyWithImpl<$Res>;
+  $Res call({MemberSignedIn member, String points});
+}
+
+class _$EarnPointsCopyWithImpl<$Res> extends _$MemberAppEventCopyWithImpl<$Res>
+    implements $EarnPointsCopyWith<$Res> {
+  _$EarnPointsCopyWithImpl(EarnPoints _value, $Res Function(EarnPoints) _then)
+      : super(_value, (v) => _then(v as EarnPoints));
+
+  @override
+  EarnPoints get _value => super._value as EarnPoints;
+
+  @override
+  $Res call({
+    Object member = freezed,
+    Object points = freezed,
+  }) {
+    return _then(EarnPoints(
+      member == freezed ? _value.member : member as MemberSignedIn,
+      points == freezed ? _value.points : points as String,
+    ));
+  }
+}
+
+class _$EarnPoints implements EarnPoints {
+  const _$EarnPoints(this.member, this.points)
+      : assert(member != null),
+        assert(points != null);
+
+  @override
+  final MemberSignedIn member;
+  @override
+  final String points;
+
+  @override
+  String toString() {
+    return 'MemberAppEvent.earnPoints(member: $member, points: $points)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is EarnPoints &&
+            (identical(other.member, member) ||
+                const DeepCollectionEquality().equals(other.member, member)) &&
+            (identical(other.points, points) ||
+                const DeepCollectionEquality().equals(other.points, points)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(member) ^
+      const DeepCollectionEquality().hash(points);
+
+  @override
+  $EarnPointsCopyWith<EarnPoints> get copyWith =>
+      _$EarnPointsCopyWithImpl<EarnPoints>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loadEvent(MemberRegister member),
+    @required Result usePoints(MemberSignedIn member, String points),
+    @required Result earnPoints(MemberSignedIn member, String points),
+  }) {
+    assert(loadEvent != null);
+    assert(usePoints != null);
+    assert(earnPoints != null);
+    return earnPoints(member, points);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loadEvent(MemberRegister member),
+    Result usePoints(MemberSignedIn member, String points),
+    Result earnPoints(MemberSignedIn member, String points),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (earnPoints != null) {
+      return earnPoints(member, points);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loadEvent(LoadEvent value),
+    @required Result usePoints(UsePoints value),
+    @required Result earnPoints(EarnPoints value),
+  }) {
+    assert(loadEvent != null);
+    assert(usePoints != null);
+    assert(earnPoints != null);
+    return earnPoints(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loadEvent(LoadEvent value),
+    Result usePoints(UsePoints value),
+    Result earnPoints(EarnPoints value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (earnPoints != null) {
+      return earnPoints(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EarnPoints implements MemberAppEvent {
+  const factory EarnPoints(MemberSignedIn member, String points) = _$EarnPoints;
+
+  MemberSignedIn get member;
+  String get points;
+  $EarnPointsCopyWith<EarnPoints> get copyWith;
 }
 
 class _$MemberAppStateTearOff {

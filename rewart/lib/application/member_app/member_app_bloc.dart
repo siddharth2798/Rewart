@@ -46,6 +46,17 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
           (r) => MemberAppState.loadSuccess(memberSignedIn: r),
         );
       },
+      earnPoints: (event) async* {
+        yield const MemberAppState.loading();
+        final memberSignedIn = await _authFacade.earnPoints(
+          memberSignedIn: event.member,
+          points: event.points,
+        );
+        yield memberSignedIn.fold(
+          (f) => const MemberAppState.loadFailed(),
+          (r) => MemberAppState.loadSuccess(memberSignedIn: r),
+        );
+      },
     );
   }
 }

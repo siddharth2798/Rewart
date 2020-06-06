@@ -1,6 +1,7 @@
 import 'package:app/application/member_app/member_app_bloc.dart';
 import 'package:app/domain/app/member.dart';
 import 'package:app/presentation/pages/member_app/dashboard.dart';
+import 'package:app/presentation/pages/member_app/goals.dart';
 import 'package:app/presentation/pages/member_app/leaderboard.dart';
 import 'package:app/presentation/pages/member_app/marketplace.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class _MemberAppState extends State<MemberApp> {
   List<Widget> pages = const <Widget>[
     Marketplace(),
     MemberDashboard(),
-    Text("goals"),
+    Goals(),
     MemberLeaderboard(),
   ];
 

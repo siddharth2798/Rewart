@@ -68,7 +68,8 @@ class Shop extends StatelessWidget {
                 item: items[index],
                 onBuy: (String points) {
                   context.bloc<MemberAppBloc>().add(
-                      MemberAppEvent.usePoints(value.memberSignedIn, points));
+                        MemberAppEvent.usePoints(value.memberSignedIn, points),
+                      );
                 },
               ),
               separatorBuilder: (context, index) => const SizedBox(

@@ -18,6 +18,10 @@ abstract class IAppRepo {
     @required MemberSignedIn memberSignedIn,
     @required String points,
   });
+  Future<Either<AppFailure, MemberSignedIn>> earnPoints({
+    @required MemberSignedIn memberSignedIn,
+    @required String points,
+  });
 
   Future<Either<AppFailure, Unit>> registerPartner({
     @required Partner partnerData,

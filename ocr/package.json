@@ -1,0 +1,12 @@
+{
+  "name": "ocr",
+  "version": "1.0.0",
+  "description": "bill scanner",
+  "main": "text.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "tesseract.js": "^2.1.1"
+  }
+}
