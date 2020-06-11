@@ -29,7 +29,7 @@ class _MemberAppState extends State<MemberApp> {
 
   @override
   void dispose() {
-    _memberAppBloc.close();
+    // _memberAppBloc.close();
     super.dispose();
   }
 

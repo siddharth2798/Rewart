@@ -32,7 +32,10 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
             accountNumber: event.member.accountNumber);
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
-          (r) => MemberAppState.loadSuccess(memberSignedIn: r),
+          (r) {
+            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            return MemberAppState.loadSuccess(memberSignedIn: r);
+          },
         );
       },
       usePoints: (event) async* {
@@ -43,7 +46,10 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
         );
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
-          (r) => MemberAppState.loadSuccess(memberSignedIn: r),
+          (r) {
+            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            return MemberAppState.loadSuccess(memberSignedIn: r);
+          },
         );
       },
       earnPoints: (event) async* {
@@ -54,7 +60,10 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
         );
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
-          (r) => MemberAppState.loadSuccess(memberSignedIn: r),
+          (r) {
+            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            return MemberAppState.loadSuccess(memberSignedIn: r);
+          },
         );
       },
     );

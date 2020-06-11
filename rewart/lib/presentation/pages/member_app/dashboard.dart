@@ -1,3 +1,5 @@
+import 'package:app/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,10 +21,14 @@ class MemberDashboard extends StatelessWidget {
               children: <Widget>[
                 Align(
                   alignment: Alignment.topRight,
-                  child: Icon(
-                    Icons.power_settings_new,
-                    size: 50,
-                    color: Colors.grey,
+                  child: IconButton(
+                    onPressed: () => ExtendedNavigator.rootNavigator
+                        .pushReplacementNamed(Routes.memberSignInForm),
+                    icon: const Icon(
+                      Icons.power_settings_new,
+                      size: 50,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -53,17 +59,16 @@ class MemberDashboard extends StatelessWidget {
                         CircleAvatar(
                           backgroundColor: Theme.of(context).accentColor,
                           backgroundImage: const NetworkImage(
-                            'https://miro.medium.com/fit/c/336/336/2*nFCNQ2gnpA1a-dWt6YaFng.jpeg',
+                            "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
                           ),
                           radius: 50,
                         ),
                         Text(
-                          value.memberSignedIn.firstName.getOrCrash() +
-                              value.memberSignedIn.lastName.getOrCrash(),
+                          "${value.memberSignedIn.firstName.getOrCrash()} ${value.memberSignedIn.lastName.getOrCrash()}",
                           style: Theme.of(context).accentTextTheme.headline6,
                         ),
                         Text(
-                          "Account Number: ${value.memberSignedIn.id.getOrCrash()}",
+                          "User Id: ${value.memberSignedIn.id.getOrCrash()}",
                           style: Theme.of(context).accentTextTheme.bodyText2,
                         ),
                         const Divider(
@@ -151,15 +156,21 @@ class UtilityProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: CircularProgressIndicator(
-            value: value,
-            strokeWidth: 6,
-            backgroundColor: backgroundColor,
-            valueColor: AlwaysStoppedAnimation<Color>(valueColor),
-          ),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              height: 50,
+              width: 50,
+              child: CircularProgressIndicator(
+                value: value,
+                strokeWidth: 6,
+                backgroundColor: backgroundColor,
+                valueColor: AlwaysStoppedAnimation<Color>(valueColor),
+              ),
+            ),
+            Text("${(value * 100).toInt().toString()} %"),
+          ],
         ),
         const SizedBox(
           height: 10,

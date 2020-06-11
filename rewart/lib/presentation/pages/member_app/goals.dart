@@ -41,6 +41,12 @@ class Goals extends StatelessWidget {
                             leading: Image.network(
                               "https://clipartart.com/images450_/clipart-panels-2.png",
                             ),
+                            onTap: () => context.bloc<MemberAppBloc>().add(
+                                  MemberAppEvent.earnPoints(
+                                    value.memberSignedIn,
+                                    "100",
+                                  ),
+                                ),
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const <Widget>[
@@ -64,64 +70,64 @@ class Goals extends StatelessWidget {
                           ),
                           child: ListTile(
                             leading: Image.network(
-                              "https://clipartart.com/images450_/clipart-panels-2.png",
+                              "https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png",
                             ),
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const <Widget>[
-                                Text("Greener Tommorrow"),
-                                Text("+100"),
+                                Text("Rewart Stars"),
+                                Text("+200"),
                               ],
                             ),
                             subtitle: const Text(
-                              "Redeem this coupon now!",
+                              "Earn extra points for reaching level 5 within 2 months!",
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Text(
-                    "Redeem",
-                    style: Theme.of(context).primaryTextTheme.headline4,
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: partnerList.length,
-                      itemBuilder: (context, index) => Card(
-                        color: Colors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              10,
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
-                          onTap: () => context.bloc<MemberAppBloc>().add(
-                                MemberAppEvent.earnPoints(
-                                  value.memberSignedIn,
-                                  "100",
-                                ),
-                              ),
-                          leading: Image.network(
-                            "https://clipartart.com/images450_/clipart-panels-2.png",
-                          ),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(partnerList[index].companyName.getOrCrash()),
-                              const Text("+100"),
-                            ],
-                          ),
-                          subtitle: const Text(
-                            "Redeem this coupon now!",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Text(
+                  //   "Redeem",
+                  //   style: Theme.of(context).primaryTextTheme.headline4,
+                  // ),
+                  // Expanded(
+                  //   child: ListView.builder(
+                  //     shrinkWrap: true,
+                  //     itemCount: partnerList.length,
+                  //     itemBuilder: (context, index) => Card(
+                  //       color: Colors.white,
+                  //       shape: const RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.all(
+                  //           Radius.circular(
+                  //             10,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       child: ListTile(
+                  // onTap: () => context.bloc<MemberAppBloc>().add(
+                  //       MemberAppEvent.earnPoints(
+                  //         value.memberSignedIn,
+                  //         "100",
+                  //       ),
+                  //     ),
+                  //         leading: Image.network(
+                  //           "https://clipartart.com/images450_/clipart-panels-2.png",
+                  //         ),
+                  //         title: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //           children: <Widget>[
+                  //             Text(partnerList[index].companyName.getOrCrash()),
+                  //             const Text("+100"),
+                  //           ],
+                  //         ),
+                  //         subtitle: const Text(
+                  //           "Redeem this coupon now!",
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               );
             },

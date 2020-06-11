@@ -7,6 +7,7 @@ class TextFormField1 extends StatelessWidget {
   final String hintText;
   final bool autoCorrect;
   final TextInputType keyboardType;
+  final bool obscure;
 
   const TextFormField1({
     Key key,
@@ -16,6 +17,7 @@ class TextFormField1 extends StatelessWidget {
     this.hintText,
     this.autoCorrect = false,
     this.keyboardType,
+    this.obscure = false,
   }) : super(key: key);
 
   @override
@@ -26,6 +28,7 @@ class TextFormField1 extends StatelessWidget {
         horizontal: 60,
       ),
       child: TextFormField(
+        obscureText: obscure,
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           hintText: hintText,

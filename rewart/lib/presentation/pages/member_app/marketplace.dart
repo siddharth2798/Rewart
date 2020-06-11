@@ -37,11 +37,11 @@ class Marketplace extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                CategoryWidget(
+                const CategoryWidget(
                   icon: Icons.airplanemode_active,
                   title: "Flights",
                 ),
-                CategoryWidget(
+                const CategoryWidget(
                   icon: Icons.phone_android,
                   title: "Recharge",
                 ),
@@ -59,7 +59,7 @@ class Marketplace extends StatelessWidget {
                   navigateFunction: () =>
                       ExtendedNavigator.rootNavigator.pushNamed(Routes.shop),
                 ),
-                CategoryWidget(
+                const CategoryWidget(
                   icon: Icons.credit_card,
                   title: "Pay Bills",
                 ),
@@ -89,18 +89,28 @@ class Marketplace extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   backgroundColor: Theme.of(context).primaryColor,
+                  backgroundImage: const NetworkImage(
+                    "https://pngimage.net/wp-content/uploads/2018/06/it-company-logo-png-6.png",
+                  ),
                   radius: 30,
                 ),
                 CircleAvatar(
                   backgroundColor: Theme.of(context).primaryColor,
+                  backgroundImage: const NetworkImage(
+                    "https://shmector.com/_ph/13/188552034.png",
+                  ),
                   radius: 30,
                 ),
                 CircleAvatar(
                   backgroundColor: Theme.of(context).primaryColor,
+                  backgroundImage: const NetworkImage(
+                      "https://www.clipartmax.com/png/middle/210-2102076_travel-agency-with-day-tours-and-accommodation-graphic-design.png"),
                   radius: 30,
                 ),
                 CircleAvatar(
                   backgroundColor: Theme.of(context).primaryColor,
+                  backgroundImage: const NetworkImage(
+                      "https://www.pngfind.com/pngs/m/665-6659827_enterprise-comments-default-company-logo-png-transparent-png.png"),
                   radius: 30,
                 )
               ],

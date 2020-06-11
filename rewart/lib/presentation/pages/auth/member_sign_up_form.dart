@@ -1,4 +1,3 @@
-import 'package:app/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/auth/sign_in_form_member/sign_in_form_member_bloc.dart';
+import '../../routes/router.gr.dart';
 import 'widgets/buttons.dart';
 import 'widgets/link_texts.dart';
 import 'widgets/text_form_fields.dart';
@@ -22,10 +22,10 @@ class MemberSignUpForm extends StatelessWidget {
           either.fold(
             (failure) {
               FlushbarHelper.createError(
-                message: failure.map(
-                  serverError: (value) => 'Server Error',
-                  cardIdAlreadyExists: (value) => 'Card Id already in use',
-                  invalidCredentials: (value) => 'Invalid Creds',
+                message: failure.maybeMap(
+                  cardIdAlreadyExists: (value) => 'User Id already in use',
+                  invalidCredentials: (value) => 'Invalid Credentials',
+                  orElse: () => 'Server Error',
                 ),
               ).show(context);
             },
@@ -50,7 +50,7 @@ class MemberSignUpForm extends StatelessWidget {
                     shrinkWrap: true,
                     children: <Widget>[
                       TextFormField1(
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: const Icon(Icons.person),
                         hintText: 'First Name',
                         onChanged: (value) {
                           bloc.add(
@@ -68,7 +68,7 @@ class MemberSignUpForm extends StatelessWidget {
                         },
                       ),
                       TextFormField1(
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: const Icon(Icons.person),
                         hintText: 'Last Name',
                         onChanged: (value) {
                           bloc.add(
@@ -86,7 +86,7 @@ class MemberSignUpForm extends StatelessWidget {
                         },
                       ),
                       TextFormField1(
-                        prefixIcon: Icon(Icons.email),
+                        prefixIcon: const Icon(Icons.email),
                         hintText: 'Email',
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
@@ -105,7 +105,7 @@ class MemberSignUpForm extends StatelessWidget {
                         },
                       ),
                       TextFormField1(
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: const Icon(Icons.phone),
                         hintText: 'Phone Number',
                         keyboardType: TextInputType.phone,
                         onChanged: (value) {
@@ -124,8 +124,8 @@ class MemberSignUpForm extends StatelessWidget {
                         },
                       ),
                       TextFormField1(
-                        prefixIcon: Icon(Icons.lock),
-                        hintText: 'Account Number',
+                        prefixIcon: const Icon(Icons.lock),
+                        hintText: 'User Id',
                         onChanged: (value) {
                           bloc.add(
                             SignInFormMemberEvent.accountNumberChanged(value),
@@ -135,7 +135,7 @@ class MemberSignUpForm extends StatelessWidget {
                           return bloc.state.member.accountNumber.value.fold(
                             (f) => f.maybeMap(
                               invalidAccountNumber: (_) =>
-                                  'Invalid Account Number',
+                                  'Invalid User Id Format',
                               orElse: () => null,
                             ),
                             (_) => null,
@@ -143,8 +143,9 @@ class MemberSignUpForm extends StatelessWidget {
                         },
                       ),
                       TextFormField1(
-                        prefixIcon: Icon(Icons.vpn_key),
-                        hintText: 'Access Card Id',
+                        prefixIcon: const Icon(Icons.vpn_key),
+                        hintText: 'Password',
+                        obscure: true,
                         onChanged: (value) {
                           bloc.add(
                             SignInFormMemberEvent.accessCardIdChanged(value),
@@ -153,7 +154,8 @@ class MemberSignUpForm extends StatelessWidget {
                         validator: (_) {
                           return bloc.state.member.accessCardId.value.fold(
                             (f) => f.maybeMap(
-                              invalidCharacters: (_) => 'Invalid Card Id',
+                              invalidCharacters: (_) =>
+                                  'Invalid Password Format',
                               orElse: () => null,
                             ),
                             (_) => null,
