@@ -13,8 +13,8 @@ class Shop extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = <Item>[
       Item(
-        title: 'Runners XXX',
-        brand: 'Nike',
+        title: 'Sports Shoe',
+        brand: 'Lulu',
         category: 'Shoe',
         price: "65",
         imageSrc:
@@ -22,7 +22,7 @@ class Shop extends StatelessWidget {
       ),
       Item(
         title: 'Rose Sofa',
-        brand: 'Home Center',
+        brand: 'Lulu',
         category: 'Furniture',
         price: "120",
         imageSrc:

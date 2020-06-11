@@ -33,7 +33,8 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
           (r) {
-            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            r.levelDataList
+                .sort((a, b) => b.totalPoints.compareTo(a.totalPoints));
             return MemberAppState.loadSuccess(memberSignedIn: r);
           },
         );
@@ -47,7 +48,8 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
           (r) {
-            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            r.levelDataList
+                .sort((a, b) => b.totalPoints.compareTo(a.totalPoints));
             return MemberAppState.loadSuccess(memberSignedIn: r);
           },
         );
@@ -61,7 +63,8 @@ class MemberAppBloc extends Bloc<MemberAppEvent, MemberAppState> {
         yield memberSignedIn.fold(
           (f) => const MemberAppState.loadFailed(),
           (r) {
-            r.levelDataList.sort((a, b) => b.level.compareTo(a.level));
+            r.levelDataList
+                .sort((a, b) => b.totalPoints.compareTo(a.totalPoints));
             return MemberAppState.loadSuccess(memberSignedIn: r);
           },
         );
