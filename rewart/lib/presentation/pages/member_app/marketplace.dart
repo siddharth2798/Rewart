@@ -36,12 +36,12 @@ class Marketplace extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                const CategoryWidget(
+              children: const <Widget>[
+                CategoryWidget(
                   icon: Icons.airplanemode_active,
                   title: "Flights",
                 ),
-                const CategoryWidget(
+                CategoryWidget(
                   icon: Icons.phone_android,
                   title: "Recharge",
                 ),

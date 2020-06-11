@@ -58,22 +58,22 @@ class _MemberAppState extends State<MemberApp> {
         onTap: (value) => setState(() {
           currentIndex = value;
         }),
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_basket),
-            title: const Text("Shop"),
+            title: Text("Shop"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
-            title: const Text("Dashboard"),
+            title: Text("Dashboard"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.golf_course),
-            title: const Text("Goals"),
+            title: Text("Goals"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.supervised_user_circle),
-            title: const Text("Leaderboard"),
+            title: Text("Leaderboard"),
           ),
         ],
       ),

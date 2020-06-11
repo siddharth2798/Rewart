@@ -42,9 +42,9 @@ class Shop extends StatelessWidget {
         loadFailed: (value) => const Center(child: CircularProgressIndicator()),
         loading: (value) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const CircularProgressIndicator(),
-            const SizedBox(
+          children: const <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(
               height: 10,
             ),
             Material(
@@ -113,7 +113,7 @@ class ShopItem extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: CupertinoButton(
                     onPressed: () => ExtendedNavigator.rootNavigator.pop(),
-                    child: Icon(
+                    child: const Icon(
                       Icons.close,
                       size: 30,
                     ),
@@ -155,21 +155,21 @@ class ShopItem extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     item.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
                   ),
                   Text(
                     item.brand,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
                     ),
                   ),
                   Text(
                     item.category,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
                     ),
@@ -179,7 +179,7 @@ class ShopItem extends StatelessWidget {
                   ),
                   Text(
                     "\$${double.parse(item.price) * 0.1}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.brown,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

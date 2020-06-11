@@ -16,7 +16,7 @@ class Goals extends StatelessWidget {
             loadFailed: (value) => const CircularProgressIndicator(),
             loading: (value) => const CircularProgressIndicator(),
             loadSuccess: (value) {
-              final partnerList = value.memberSignedIn.partnerBasicList;
+              // final partnerList = value.memberSignedIn.partnerBasicList;
 
               return Column(
                 children: <Widget>[
